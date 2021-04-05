@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace MyProject_Backend.Models
+namespace ShareModel
 {
     public class User : IdentityUser
     {

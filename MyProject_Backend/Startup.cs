@@ -8,7 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MyProject_Backend.Data;
 using MyProject_Backend.IdentityServer;
-using MyProject_Backend.Models;
+using ShareModel;
 using System;
 using System.Collections.Generic;
 

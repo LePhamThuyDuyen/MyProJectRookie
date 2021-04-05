@@ -10,9 +10,10 @@ namespace ShareModel
 
         public User(string userName) : base(userName)
         {
+
         }
 
-        //[PersonalData]
-        //public string FullName { get; set; }
+        [PersonalData]
+        public string FullName { get; set; }
     }
 }

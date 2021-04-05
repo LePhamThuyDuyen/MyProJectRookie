@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Le Duyen\\Desktop\\MyProject_Backend\\ShareModel\\ShareModel.csproj": {}
+    "C:\\Users\\LeDuyen\\Documents\\MyProJectRookie\\ShareModel\\ShareModel.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Le Duyen\\Desktop\\MyProject_Backend\\ShareModel\\ShareModel.csproj": {
+    "C:\\Users\\LeDuyen\\Documents\\MyProJectRookie\\ShareModel\\ShareModel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Le Duyen\\Desktop\\MyProject_Backend\\ShareModel\\ShareModel.csproj",
+        "projectUniqueName": "C:\\Users\\LeDuyen\\Documents\\MyProJectRookie\\ShareModel\\ShareModel.csproj",
         "projectName": "ShareModel",
-        "projectPath": "C:\\Users\\Le Duyen\\Desktop\\MyProject_Backend\\ShareModel\\ShareModel.csproj",
-        "packagesPath": "C:\\Users\\Le Duyen\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Le Duyen\\Desktop\\MyProject_Backend\\ShareModel\\obj\\",
+        "projectPath": "C:\\Users\\LeDuyen\\Documents\\MyProJectRookie\\ShareModel\\ShareModel.csproj",
+        "packagesPath": "C:\\Users\\LeDuyen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\LeDuyen\\Documents\\MyProJectRookie\\ShareModel\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Le Duyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\LeDuyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,6 +43,12 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.4, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

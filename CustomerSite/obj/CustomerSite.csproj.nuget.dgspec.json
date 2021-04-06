@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Le Duyen\\Desktop\\MyProject_Backend\\CustomerSite\\CustomerSite.csproj": {}
+    "C:\\Users\\LeDuyen\\Documents\\MyProJectRookie\\CustomerSite\\CustomerSite.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Le Duyen\\Desktop\\MyProject_Backend\\CustomerSite\\CustomerSite.csproj": {
+    "C:\\Users\\LeDuyen\\Documents\\MyProJectRookie\\CustomerSite\\CustomerSite.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Le Duyen\\Desktop\\MyProject_Backend\\CustomerSite\\CustomerSite.csproj",
+        "projectUniqueName": "C:\\Users\\LeDuyen\\Documents\\MyProJectRookie\\CustomerSite\\CustomerSite.csproj",
         "projectName": "CustomerSite",
-        "projectPath": "C:\\Users\\Le Duyen\\Desktop\\MyProject_Backend\\CustomerSite\\CustomerSite.csproj",
-        "packagesPath": "C:\\Users\\Le Duyen\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Le Duyen\\Desktop\\MyProject_Backend\\CustomerSite\\obj\\",
+        "projectPath": "C:\\Users\\LeDuyen\\Documents\\MyProJectRookie\\CustomerSite\\CustomerSite.csproj",
+        "packagesPath": "C:\\Users\\LeDuyen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\LeDuyen\\Documents\\MyProJectRookie\\CustomerSite\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Le Duyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\LeDuyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -27,7 +31,11 @@
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\LeDuyen\\Documents\\MyProJectRookie\\ShareModel\\ShareModel.csproj": {
+                "projectPath": "C:\\Users\\LeDuyen\\Documents\\MyProJectRookie\\ShareModel\\ShareModel.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -40,6 +48,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.AspNet.WebApi.Client": {
+              "target": "Package",
+              "version": "[5.2.7, )"
+            },
             "Microsoft.AspNetCore.Authentication.OpenIdConnect": {
               "target": "Package",
               "version": "[5.0.4, )"
@@ -79,6 +91,70 @@
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
             },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\LeDuyen\\Documents\\MyProJectRookie\\ShareModel\\ShareModel.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\LeDuyen\\Documents\\MyProJectRookie\\ShareModel\\ShareModel.csproj",
+        "projectName": "ShareModel",
+        "projectPath": "C:\\Users\\LeDuyen\\Documents\\MyProJectRookie\\ShareModel\\ShareModel.csproj",
+        "packagesPath": "C:\\Users\\LeDuyen\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\LeDuyen\\Documents\\MyProJectRookie\\ShareModel\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\LeDuyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

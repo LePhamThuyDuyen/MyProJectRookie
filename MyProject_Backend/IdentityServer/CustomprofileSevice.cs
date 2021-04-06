@@ -5,6 +5,7 @@ using IdentityServer4.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using MyProject_Backend.Models;
+using ShareModel;
 using System;
 using System.Collections.Generic;
 using System.Globalization;

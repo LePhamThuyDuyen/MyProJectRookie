@@ -1,103 +1,70 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using MyProject_Backend.Data;
+﻿using Microsoft.AspNetCore.Mvc;
 using MyProject_Backend.Models;
 using ShareModel;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace MyProject_Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize("Bearer")]
+    //[Authorize("Bearer")]
     public class CategoryController : ControllerBase
     {
-        private readonly ApplicationDbContext _applicationDbContext;
+      // private readonly ApplicationDbContext _applicationDbContext;
 
-        public CategoryController(ApplicationDbContext applicationDbContext)
+        private readonly ICategory _category1;
+
+      
+        public CategoryController( ICategory category)
         {
-            _applicationDbContext = applicationDbContext;
+   
+            _category1 = category;
+
         }
 
         [HttpGet]
-        [AllowAnonymous]
+       // [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<CategoryShare>>> Get()
         {
-            return await _applicationDbContext.categories
-                .Select(x => new CategoryShare { CategoryId = x.CategoryId, CategoryName= x.CategoryName})
-                .ToListAsync();
+            var category = await _category1.GetAllAsync();
+            return Ok(category);
         }
 
         [HttpGet("{id}")]
-        [AllowAnonymous]
+       // [AllowAnonymous]
         public async Task<ActionResult<CategoryShare>> GetCategory(int id)
         {
-            var brand = await _applicationDbContext.categories.FindAsync(id);
-
-            if (brand == null)
-            {
-                return NotFound();
-            }
-
-            var category = new CategoryShare
-            {
-                CategoryId = brand.CategoryId,
-                CategoryName = brand.CategoryName
-            };
-
-            return category;
+            var catagory = await _category1.getById(id);
+            return Ok(catagory);
         }
 
         [HttpPut("{id}")]
-        [Authorize(Roles = "admin")]
-        public async Task<IActionResult> PutCategory(int id, CategoryCreateRequest categoryCreateRequest)
+        //[Authorize(Roles = "admin")]
+        public async Task<IActionResult> PutCategory(int id, Category categories)
         {
-            var category = await _applicationDbContext.categories.FindAsync(id);
-
+            var category = await _category1.UpdateAsync(id,categories);
             if (category == null)
-            {
                 return NotFound();
-            }
-
-            category.CategoryName = categoryCreateRequest.Name;
-            await _applicationDbContext.SaveChangesAsync();
-
-            return NoContent();
+            return Ok(category);
+            
         }
 
 
         [HttpPost]
-        [Authorize(Roles = "admin")]
-        public async Task<ActionResult<CategoryShare>> PostCategory(CategoryCreateRequest brandCreateRequest)
+        //[Authorize(Roles = "admin")]
+        public async Task<ActionResult<CategoryShare>> PostCategory(Category categories)
         {
-            var category = new Category
-            {
-                CategoryName = brandCreateRequest.Name
-            };
-
-            _applicationDbContext.categories.Add(category);
-            await _applicationDbContext.SaveChangesAsync();
-
-            return CreatedAtAction("GetBrand", new { id = category.CategoryId }, new CategoryShare { CategoryId = category.CategoryId, CategoryName = category.CategoryName });
+            var category = await _category1.CreateAsync(categories);
+            return Ok(category);
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Roles = "admin")]
+      //  [Authorize(Roles = "admin")]
         public async Task<IActionResult> DeleteCategory(int id)
         {
-            var category = await _applicationDbContext.categories.FindAsync(id);
-            if (category == null)
-            {
-                return NotFound();
-            }
-
-            _applicationDbContext.categories.Remove(category);
-            await _applicationDbContext.SaveChangesAsync();
-
-            return NoContent();
+            var category = await _category1.DeleteAsync (id);
+            return Ok(category);
         }
     }
 }

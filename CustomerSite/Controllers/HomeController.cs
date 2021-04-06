@@ -2,20 +2,25 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace CustomerSite.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        //private readonly ICategoryApiClient _apiClient;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger/*, ICategoryApiClient apiClient*/)
         {
             _logger = logger;
+            //_apiClient = apiClient;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            //var Catrgory = await _apiClient.GetCategories();
+            //return View(Catrgory);
             return View();
         }
 

@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using MyProject_Backend.Controllers;
 using MyProject_Backend.Data;
 using MyProject_Backend.IdentityServer;
 using ShareModel;
@@ -30,6 +31,9 @@ namespace MyProject_Backend
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
+
+            services.AddTransient<ICategory, CategoryService>();
+          //  services.AddTransient<IProduct, ProductService>();
 
             services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddRoles<IdentityRole>()

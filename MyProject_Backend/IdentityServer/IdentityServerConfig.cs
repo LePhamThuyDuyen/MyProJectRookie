@@ -47,7 +47,7 @@ namespace MyProject_Backend.IdentityServer
                     RedirectUris = { "https://localhost:44351/signin-oidc" },
 
                     PostLogoutRedirectUris = { "https://localhost:44351/signout-callback-oidc" },
-
+                      
                     AllowedScopes = new List<string>
                     {
                         IdentityServerConstants.StandardScopes.OpenId,

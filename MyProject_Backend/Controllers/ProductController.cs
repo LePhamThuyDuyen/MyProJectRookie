@@ -2,8 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using MyProject_Backend.Data;
 using ShareModel;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -29,11 +27,17 @@ namespace MyProject_Backend.Controllers
                 ProductName = x.Name,
                 Price = x.Price,
                 Description = x.Description,
-               // Image = x.Image,
-
+                
             }).ToListAsync();
             return Ok(products);
         }
+        
+        //[HttpPost]
+
+        //public async Task<ActionResult> Create (ProductFromCategory share)
+        //{
+            
+        //}
 
     }
 }

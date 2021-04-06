@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace MyProject_Backend.Models
+﻿namespace MyProject_Backend.Models
 {
     public class Product
     {

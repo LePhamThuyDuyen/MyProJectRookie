@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MyProject_Backend.Models;
+using ShareModel;
 
 namespace MyProject_Backend.Data
 {

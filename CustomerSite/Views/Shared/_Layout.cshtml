@@ -33,6 +33,7 @@
         </nav>
     </header>
     <div class="container">
+        @await Component.InvokeAsync("CategoryMenu")
         <main role="main" class="pb-3">
             @RenderBody()
         </main>

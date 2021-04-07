@@ -1,4 +1,7 @@
-﻿using MyProject_Backend.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using MyProject_Backend.Data;
+using MyProject_Backend.Models;
+using ShareModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,24 +13,57 @@ namespace MyProject_Backend.Controllers
 {
     public class ProductService : IProduct
     {
-        public Task<Product> CreateAsync(Product pro)
+        private readonly ApplicationDbContext _applicationDb;
+
+        public ProductService(ApplicationDbContext applicationDb)
         {
-            throw new NotImplementedException();
+            _applicationDb = applicationDb;
+        }
+        public async Task<Product> CreateAsync(Product pro)
+        {
+            
+            _applicationDb.Add(pro);
+            await _applicationDb.SaveChangesAsync();
+            return pro;
         }
 
-        public Task<Product> DeleteAsync(int id)
+        public async Task<Product> DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var product = await _applicationDb.products.FindAsync(id);
+            if (product == null)
+                return null;
+            _applicationDb.products.Remove(product);
+            await _applicationDb.SaveChangesAsync();
+            return product;
         }
 
-        public Task<IEnumerable<Product>> GetAllAsync()
+        public async Task<IEnumerable<ProductShare>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var product = await _applicationDb.products.Include(p => p.category).Select(p =>
+                new ProductShare
+                {
+                    ProductID = p.Id,
+                    ProductName = p.Name,
+                    Description = p.Description,
+                    Price = p.Price,
+                    Image = p.Image
+                }).ToListAsync();
+            return product;
         }
 
-        public Task<IEnumerable<Product>> GetByCategoryAsync(string categoryName)
+        public async Task<IEnumerable<ProductShare>> GetByCategoryAsync(string categoryName)
         {
-            throw new NotImplementedException();
+            var products = await _applicationDb.products.Include(p => p.category).Where(p => p.category.CategoryName == categoryName).Select(p =>
+                 new ProductShare
+                 {
+                     ProductID = p.Id,
+                     ProductName = p.Name,
+                     Description = p.Description,
+                     Price = p.Price,
+                    // CategoryName = p.Category.Name
+                 }).ToListAsync();
+
+            return products;
         }
 
         public Task<Product> UpdateAsync(int id, Product pro)

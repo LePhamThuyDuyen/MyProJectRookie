@@ -33,7 +33,7 @@ namespace MyProject_Backend
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddTransient<ICategory, CategoryService>();
-          //  services.AddTransient<IProduct, ProductService>();
+            services.AddTransient<IProduct, ProductService>();
 
             services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddRoles<IdentityRole>()

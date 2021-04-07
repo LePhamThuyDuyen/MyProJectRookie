@@ -7,5 +7,6 @@ namespace CustomerSite.Controllers
 {
     public class ProductController
     {
+
     }
 }

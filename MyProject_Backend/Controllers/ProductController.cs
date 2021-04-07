@@ -11,25 +11,18 @@ namespace MyProject_Backend.Controllers
     [Route("[controller]")]
     public class ProductController : ControllerBase
     {
-        private readonly ApplicationDbContext _applicationDbContext;
+        private IProduct _product;
 
-        public ProductController(ApplicationDbContext applicationDbContext)
+        public ProductController(IProduct product)
         {
-            _applicationDbContext = applicationDbContext;
+            _product = product;
         }
 
         [HttpGet]
         public async Task<ActionResult<ProductShare>> Get()
         {
-            var products = await _applicationDbContext.products.Select(x => new ProductShare
-            {
-                ProductID = x.Id,
-                ProductName = x.Name,
-                Price = x.Price,
-                Description = x.Description,
-                
-            }).ToListAsync();
-            return Ok(products);
+            var product = await _product.GetAllAsync();
+            return Ok(product);
         }
         
         //[HttpPost]

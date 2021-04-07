@@ -55,7 +55,7 @@ namespace CustomerSite
                });
 
             services.AddHttpClient();
-           // services.AddTransient<IProductClient, ProductClient>();
+            services.AddTransient<IProductApiClient, ProductApiClient>();
             services.AddTransient<ICategoryApiClient, CategoryApiClient>();
 
             services.AddControllersWithViews();

@@ -1,6 +1,8 @@
 ﻿using CustomerSite.Models;
+using CustomerSite.SerVices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
@@ -9,19 +11,18 @@ namespace CustomerSite.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        //private readonly ICategoryApiClient _apiClient;
+        private readonly IProductApiClient _productApiClient;
 
-        public HomeController(ILogger<HomeController> logger/*, ICategoryApiClient apiClient*/)
+        public HomeController(ILogger<HomeController> logger,IProductApiClient productApiClient)
         {
             _logger = logger;
-            //_apiClient = apiClient;
+            _productApiClient = productApiClient;
         }
 
         public async Task<IActionResult> Index()
         {
-            //var Catrgory = await _apiClient.GetCategories();
-            //return View(Catrgory);
-            return View();
+             var results = await _productApiClient.GetProducts();
+            return View(results);
         }
 
         public IActionResult Privacy()

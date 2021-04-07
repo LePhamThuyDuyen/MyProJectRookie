@@ -15,7 +15,7 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">              
+            <div class="container">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -23,14 +23,14 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <nav class="navbar navbar-inverse navbar-fixed-top">
                         <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item", style="margin-top:15px;">
-                                @await Component.InvokeAsync("CategoryMenu")  
+                            <li class="nav-item" , style="margin-top:15px;">
+                                @await Component.InvokeAsync("CategoryMenu")
                             </li>
-                                       
-                                <partial name="_LoginPartial" />
-                            
+
+                            <partial name="_LoginPartial" />
+
                         </ul>
-                        </nav>
+                    </nav>
                 </div>
             </div>
         </nav>
@@ -46,19 +46,20 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
                 <div class="item active">
-                    <img src="./img//back1.jpg" alt="Los Angeles" style="width:100%; height:650px;">
+                    <img src="./img//back1.jpg" alt="los angeles" style="width:100%; height:650px;">
                 </div>
 
                 <div class="item">
-                    <img src="./img//back2.jpg" alt="Chicago" style="width:100%;height:650px;">
+                    <img src="./img//back2.jpg" alt="chicago" style="width:100%;height:650px;">
                 </div>
 
                 <div class="item">
-                    <img src="./img//back4.jpg" alt="New york" style="width:100%;height:650px;">
+                    <img src="./img//back4.jpg" alt="new york" style="width:100%;height:650px;">
                 </div>
                 <div class="item">
-                    <img src="./img//back3.jpg" alt="New york" style="width:100%;height:650px;">
-                </div>
+            <img src="./img//back3.jpg" alt="New york" style="width:100%;height:650px;">
+        </div>
+               
             </div>
 
             <!-- Left and right controls -->
@@ -74,9 +75,11 @@
 
     </header>
     <div class="container">
-      
+
         <main role="main" class="pb-3">
             @RenderBody()
+            @*@await Component.InvokeAsync("Product")*@
+
         </main>
     </div>
 

@@ -1,0 +1,29 @@
+﻿@model IList<ShareModel.ProductShare>
+
+@foreach (var pro in Model)
+{
+    <div class="col-4" style="float:left">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal" style="width:213px; height:54px;">
+                    <label style="font-size:23px;color:steelblue;">@pro.ProductName</label>
+                </h4>
+            </div>
+            <img src="./img//@pro.Image" alt="New york" style="height:450px;">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        <p style="font-size:20px; color:#a51313;"><b>Giá:@pro.Price</b> VNĐ</p>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        <p style="font-size:20px; color:#a51313;"><b>@pro.Description</b> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+                }
+
+

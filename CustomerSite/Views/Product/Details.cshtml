@@ -1,0 +1,39 @@
+﻿@model ShareModel.ProductShare
+@using Microsoft.AspNetCore.Http
+<form method="post">
+    <div class="p-5 border rounded">
+        <div class="form-group row ">
+            <div class="col-6" style="width:100%; text-align: center;">
+                <img src="./img//@Model.Image" alt="New york" style="height:450px;">
+            </div>
+            <div class="col-6">
+
+                <div class="product-name">
+                    <h1>@Model.ProductName</h1>
+                </div>
+                <hr />
+                <p>
+                    <span class="item-title">Mã sản phẩm:</span>
+                    <span>
+                        <strong>
+                            @Model.ProductID
+                        </strong>
+                    </span>
+                </p>
+                <p>
+                    <span class="item-title">Mô tả: @Model.Description</span>
+                </p>
+                <p>
+                    <span class="item-title">Thể loại: @Model.CategoryName</span>
+                </p>
+                <div class="price-box">
+                    <h3>@Model.Price.ToString().Insert(3, ".") VNĐ</h3>
+                </div>
+                <div class="form-group">
+                    <input hidden asp-for="@Model.ProductID" />
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-success">Quay về</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

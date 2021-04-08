@@ -24,13 +24,22 @@ namespace MyProject_Backend.Controllers
             var product = await _product.GetAllAsync();
             return Ok(product);
         }
-        
+
         //[HttpPost]
 
-        //public async Task<ActionResult> Create (ProductFromCategory share)
+        //public async Task<ActionResult> Create(ProductFromCategory share)
         //{
-            
+
         //}
+
+        [HttpGet]
+        [Route("{id}")]
+     //   [AllowAnonymous]
+        public async Task<ActionResult> GetById(int id)
+        {
+            var result = await _product.GetByIdAsync(id);
+            return Ok(result);
+        }
 
     }
 }

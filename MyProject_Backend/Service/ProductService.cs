@@ -51,24 +51,50 @@ namespace MyProject_Backend.Controllers
             return product;
         }
 
-        public async Task<IEnumerable<ProductShare>> GetByCategoryAsync(string categoryName)
+        public async Task<IEnumerable<ProductFromCategory>> GetByCategoryAsync(string categoryName)
         {
             var products = await _applicationDb.products.Include(p => p.category).Where(p => p.category.CategoryName == categoryName).Select(p =>
-                 new ProductShare
+                 new ProductFromCategory
                  {
-                     ProductID = p.Id,
+                     CategoryId = p.Id,
                      ProductName = p.Name,
                      Description = p.Description,
                      Price = p.Price,
-                    // CategoryName = p.Category.Name
+                    CategoryName  = p.category.CategoryName
                  }).ToListAsync();
 
             return products;
         }
 
-        public Task<Product> UpdateAsync(int id, Product pro)
+        public async Task<ProductFromCategory> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var product = await _applicationDb.products.Include(p => p.category).Where(p => p.Id == id).Select(p =>
+               new ProductFromCategory
+               {
+                   ProductId = p.Id,
+                   ProductName = p.Name,
+                   Description = p.Description,     
+                   Price = p.Price,     
+                   Img = p.Image,
+                   CategoryName = p.category.CategoryName
+               }).FirstOrDefaultAsync();
+            return product;
         }
+
+        public async Task<Product> UpdateAsync(int id, Product pro)
+        {
+            var product = await _applicationDb.products.FindAsync(id);
+            if (product == null)
+            {
+                return null;
+            }
+            product.Name = pro.Name;
+            product.Description = pro.Description;
+            product.Price = pro.Price;
+            product.CategoryId = pro.CategoryId;
+            await _applicationDb.SaveChangesAsync();
+            return product;
+        }
+
     }
 }

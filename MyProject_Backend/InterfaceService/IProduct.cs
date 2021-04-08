@@ -13,8 +13,10 @@ namespace MyProject_Backend.Controllers
 
         Task<IEnumerable<ProductShare>> GetAllAsync();
 
-        Task<IEnumerable<ProductShare>> GetByCategoryAsync(string categoryName);
+        Task<IEnumerable<ProductFromCategory>> GetByCategoryAsync(string categoryName);
 
         Task<Product> UpdateAsync(int id, Product pro);
+
+        Task<ProductFromCategory> GetByIdAsync(int id);
     }
 }

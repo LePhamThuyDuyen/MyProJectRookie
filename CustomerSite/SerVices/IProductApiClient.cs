@@ -7,5 +7,7 @@ namespace CustomerSite.SerVices
     public interface IProductApiClient 
     {
         Task<IList<ProductShare>> GetProducts();
+
+        Task<ProductShare> GetProductById(int id);
     }
 }

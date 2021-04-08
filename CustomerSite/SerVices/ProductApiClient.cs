@@ -23,5 +23,13 @@ namespace CustomerSite.SerVices
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsAsync<IList<ProductShare>>();
         }
+
+        public async Task<ProductShare> GetProductById(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var response = await client.GetAsync("https://localhost:44311/Product/"+id);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsAsync<ProductShare>();
+        }
     }
 }

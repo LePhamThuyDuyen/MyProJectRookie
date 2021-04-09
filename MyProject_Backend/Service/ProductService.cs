@@ -51,31 +51,32 @@ namespace MyProject_Backend.Controllers
             return product;
         }
 
-        public async Task<IEnumerable<ProductFromCategory>> GetByCategoryAsync(string categoryName)
+        public async Task<IEnumerable<ProductShare>> GetByCategoryAsync(string categoryName)
         {
             var products = await _applicationDb.products.Include(p => p.category).Where(p => p.category.CategoryName == categoryName).Select(p =>
-                 new ProductFromCategory
+                 new ProductShare
                  {
-                     CategoryId = p.Id,
+
                      ProductName = p.Name,
                      Description = p.Description,
                      Price = p.Price,
+                     Image=p.Image,
                     CategoryName  = p.category.CategoryName
                  }).ToListAsync();
 
             return products;
         }
 
-        public async Task<ProductFromCategory> GetByIdAsync(int id)
+        public async Task<ProductShare> GetByIdAsync(int id)
         {
             var product = await _applicationDb.products.Include(p => p.category).Where(p => p.Id == id).Select(p =>
-               new ProductFromCategory
+               new ProductShare
                {
-                   ProductId = p.Id,
+                   ProductID = p.Id,
                    ProductName = p.Name,
                    Description = p.Description,     
                    Price = p.Price,     
-                   Img = p.Image,
+                   Image = p.Image,
                    CategoryName = p.category.CategoryName
                }).FirstOrDefaultAsync();
             return product;

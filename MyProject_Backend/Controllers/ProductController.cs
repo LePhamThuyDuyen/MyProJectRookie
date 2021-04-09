@@ -41,5 +41,14 @@ namespace MyProject_Backend.Controllers
             return Ok(result);
         }
 
+        [HttpGet]
+        [Route("category={id}")]
+     //   [AllowAnonymous]
+        public async Task<ActionResult> GetByCategory(string categoryName)
+        {
+            var results = await _product.GetByCategoryAsync(categoryName);
+            return Ok(results);
+        }
+
     }
 }

@@ -42,7 +42,7 @@ namespace MyProject_Backend.Controllers
         }
 
         [HttpGet]
-        [Route("category={id}")]
+        [Route("category={categoryName}")]
      //   [AllowAnonymous]
         public async Task<ActionResult> GetByCategory(string categoryName)
         {

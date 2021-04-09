@@ -1,28 +1,29 @@
-﻿@model IList<ShareModel.ProductShare>
+﻿@model IList<ShareModel.ProductFromCategory>
 
 @if (Model.Count() != 0)
 {
     <div class="row">
         @foreach (var product in Model)
         {
-            <div class="col-4">
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <h4 class="my-0 font-weight-normal" style="width:213px; height:54px;">
-                            <label style="font-size:23px;color:steelblue;">@product.ProductName</label>
-                        </h4>
-                    </div>
+        <div class="col-3" style="float:left;margin-top:20px">
+            <div class="card m-lg-3" style="background-color:#E8E8E8">
+                <div class="card-header" style="background-color: #696969; text-align: center; ">
+                    <h4 class="my-0 font-weight-normal" style="width:300px; height:60px;">
+                        <label style="font-size:23px;color:steelblue;">@product.ProductName</label>
+                    </h4>
+                </div>
 
-                    <img src="./img//@product.Image" alt="New york" style="height:450px;">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <label style="font-size:20px; color:#a51313"><b>Giá:@product.Price</b> VNĐ</label>
-                            </div>
+                <img src="../img//@product.Img" alt="New york" style="height:450px;">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <p style="font-size:20px; color:#a51313;"><b>Giá:@product.Price</b> VNĐ</p>
                         </div>
                     </div>
                 </div>
             </div>
+
+        </div>
 
         }
         </div>

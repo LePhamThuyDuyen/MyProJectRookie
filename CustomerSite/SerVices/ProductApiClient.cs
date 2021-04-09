@@ -32,12 +32,12 @@ namespace CustomerSite.SerVices
             return await response.Content.ReadAsAsync<ProductShare>();
         }
 
-        public async Task<IList<ProductShare>> GetProductByCategory(string categoryName)
+        public async Task<IList<ProductFromCategory>> GetProductByCategory(string categoryName)
         {
             var client = _httpClientFactory.CreateClient();
             var response = await client.GetAsync("https://localhost:44311/Product/category="+ categoryName);
             response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsAsync<IList<ProductShare>>();
+            return await response.Content.ReadAsAsync<IList<ProductFromCategory>>();
         }
 
        

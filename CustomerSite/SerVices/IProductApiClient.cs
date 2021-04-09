@@ -9,5 +9,7 @@ namespace CustomerSite.SerVices
         Task<IList<ProductShare>> GetProducts();
 
         Task<ProductShare> GetProductById(int id);
+
+        Task<IList<ProductShare>> GetProductByCategory(string categoryName);
     }
 }

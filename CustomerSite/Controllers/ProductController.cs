@@ -8,12 +8,14 @@ namespace CustomerSite.Controllers
     public class ProductController : Controller
     {
         private readonly IProductApiClient _productApiClient;
+        private readonly IConfiguration _configuration;
 
 
-        public ProductController(IProductApiClient productApiClient)
+        public ProductController(IProductApiClient productApiClient, IConfiguration configuration)
         {
             _productApiClient = productApiClient;
-            
+            _configuration = configuration;
+
         }
 
         [Route("/Prodcut/{id}")]
@@ -23,5 +25,12 @@ namespace CustomerSite.Controllers
             return View(result);
         }
 
+        [Route("/Prodcut/category{categoryName}")]
+        public async Task<IActionResult> CategoryById(string categoryName)
+        {
+            var results = await _productApiClient.GetProductByCategory(categoryName);
+            return View(results);
+
+        }
     }
 }

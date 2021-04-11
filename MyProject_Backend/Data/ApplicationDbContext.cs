@@ -14,5 +14,7 @@ namespace MyProject_Backend.Data
         public DbSet<Category> categories { get; set; }
 
         public DbSet<Product> products { get; set; }
+
+        public DbSet<Rate> rates { get; set; }
     }
 }

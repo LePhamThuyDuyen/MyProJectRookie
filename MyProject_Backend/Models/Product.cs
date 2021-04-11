@@ -1,4 +1,6 @@
-﻿namespace MyProject_Backend.Models
+﻿using System.Collections.Generic;
+
+namespace MyProject_Backend.Models
 {
     public class Product
     {
@@ -15,6 +17,8 @@
         public int CategoryId { get; set; }
 
         public Category category { get; set; }
+
+        public virtual IEnumerable<Rate> Rates { get; set; }
 
     }
 }

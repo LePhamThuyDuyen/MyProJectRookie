@@ -16,8 +16,8 @@ namespace CustomerSite.SerVices
         }
         public async Task<IList<CategoryShare>> GetCategories()
         {
-            var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync("https://localhost:44311/api/Category");
+            var client = _httpClientFactory.CreateClient("myapi");
+            var response = await client.GetAsync("/api/Category");
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsAsync<IList<CategoryShare>>();
         }

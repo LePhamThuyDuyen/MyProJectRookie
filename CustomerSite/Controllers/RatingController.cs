@@ -18,8 +18,6 @@ namespace CustomerSite.Controllers
         }
 
         [Authorize]
-       // [HttpPost, ActionName("Details")]
-        //[HttpPost("/api/Rate{id}")]
         public async Task<IActionResult> Voting(int ProductID, int rating)
         {
             string uri_redirect = Request.Headers["Referer"].ToString();

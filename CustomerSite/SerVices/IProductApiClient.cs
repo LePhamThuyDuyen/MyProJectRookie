@@ -11,5 +11,7 @@ namespace CustomerSite.SerVices
         Task<ProductShare> GetProductById(int id);
 
         Task<IList<ProductFromCategory>> GetProductByCategory(string categoryName);
+
+        Task<bool> Rating(int productId, int values);
     }
 }

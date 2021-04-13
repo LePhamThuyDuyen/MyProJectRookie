@@ -9,6 +9,8 @@ using Microsoft.OpenApi.Models;
 using MyProject_Backend.Controllers;
 using MyProject_Backend.Data;
 using MyProject_Backend.IdentityServer;
+using MyProject_Backend.InterfaceService;
+using MyProject_Backend.Service;
 using ShareModel;
 using System;
 using System.Collections.Generic;
@@ -34,10 +36,13 @@ namespace MyProject_Backend
 
             services.AddTransient<ICategory, CategoryService>();
             services.AddTransient<IProduct, ProductService>();
+            services.AddTransient<IRate, RateService>();
 
             services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddHttpContextAccessor();
 
             services.AddIdentityServer(options =>
             {

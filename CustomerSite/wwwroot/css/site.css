@@ -1,10 +1,64 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
+﻿.rate-area {
+    float: left;
+    border-style: none;
+    float:right;
+    margin-right:50px;
+    
+}
 
+.rate-area:not(:checked) > input[type=submit] {
+    position: absolute;
+    top: -9999px;
+    clip: rect(0,0,0,0);
+}
+
+.rate-area:not(:checked) > label {
+    float: right;
+    width: 1em;
+    padding: 0 .1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 400%;
+    line-height: 1.2;
+    color: lightgrey;
+    text-shadow: 1px 1px #bbb;
+}
+
+    .rate-area:not(:checked) > label:before {
+        content: '★ ';
+    }
+
+.rate-area > input[type=submit]:checked ~ label {
+    color: gold;
+    text-shadow: 1px 1px #c60;
+    font-size: 450% !important;
+}
+
+.rate-area:not(:checked) > label:hover, .rate-area:not(:checked) > label:hover ~ label {
+    color: gold;
+}
+
+.rate-area > input[type=submit]:checked + label:hover, .rate-area > input[type=submit]:checked + label:hover ~ label, .rate-area > input[type=submit]:checked ~ label:hover, .rate-area > input[type=submit]:checked ~ label:hover ~ label, .rate-area > label:hover ~ input[type=submit]:checked ~ label {
+    color: gold;
+    text-shadow: 1px 1px goldenrod;
+}
+
+.rate-area > label:active {
+    position: relative;
+    top: 2px;
+    left: 2px;
+}
 a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
+}
+.rate {
+    font-size: 30px;
+    margin-top: 50px;
+    text-shadow: black 2px 3px 4px;
+    color: #FFCC66;
 }
 
 /* Provide sufficient contrast against white background */

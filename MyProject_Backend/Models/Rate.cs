@@ -9,7 +9,7 @@ namespace MyProject_Backend.Models
         [Key]
         public int idRate { get; set; }
 
-        public string Value { get; set; }
+        public int Value { get; set; }
 
         public int ProductId { get; set; }
 

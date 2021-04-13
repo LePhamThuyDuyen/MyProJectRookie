@@ -9,11 +9,10 @@ namespace ShareModel
 {
    public class RateShare
     {
-
+ 
         public int ProductId { get; set; }
 
-        public string value { get; set; }
-
-        public int UserId { get; set; }
+        public int  value { get; set; }
+  
     }
 }

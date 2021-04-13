@@ -1,4 +1,5 @@
 ﻿using CustomerSite.SerVices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
@@ -8,14 +9,10 @@ namespace CustomerSite.Controllers
     public class ProductController : Controller
     {
         private readonly IProductApiClient _productApiClient;
-        private readonly IConfiguration _configuration;
 
-
-        public ProductController(IProductApiClient productApiClient, IConfiguration configuration)
+        public ProductController(IProductApiClient productApiClient)
         {
             _productApiClient = productApiClient;
-            _configuration = configuration;
-
         }
 
         [Route("/Prodcut/{id}")]
@@ -30,7 +27,7 @@ namespace CustomerSite.Controllers
         {
             var results = await _productApiClient.GetProductByCategory(categoryName);
             return View(results);
-
         }
+
     }
 }

@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using System;
 
 namespace CustomerSite
 {
@@ -54,6 +55,10 @@ namespace CustomerSite
                        RoleClaimType = "role"
                    };
                });
+            services.AddHttpClient("myapi", c =>
+            {
+                c.BaseAddress = new Uri("https://localhost:44311");
+            });
 
             services.AddHttpClient();
             services.AddTransient<IProductApiClient, ProductApiClient>();

@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CustomerSite\CustomerSite.csproj" />
     <ProjectReference Include="..\MyProject_Backend\MyProject_Backend.csproj" />
   </ItemGroup>
 

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyProject_Backend.Data;
 
 namespace MyProject_Backend.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210411110258_v7")]
+    partial class v7
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -208,17 +210,48 @@ namespace MyProject_Backend.Data.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Value")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
+
+                    b.Property<string>("UserId1")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("idRate");
 
                     b.HasIndex("ProductId");
 
+                    b.HasIndex("UserId1");
+
                     b.ToTable("rates");
+                });
+
+            modelBuilder.Entity("ShareModel.RateShare", b =>
+                {
+                    b.Property<int>("RateId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId1")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("RateId");
+
+                    b.HasIndex("UserId1");
+
+                    b.ToTable("RateShare");
                 });
 
             modelBuilder.Entity("ShareModel.User", b =>
@@ -353,14 +386,34 @@ namespace MyProject_Backend.Data.Migrations
 
             modelBuilder.Entity("MyProject_Backend.Models.Rate", b =>
                 {
-                    b.HasOne("MyProject_Backend.Models.Product", null)
+                    b.HasOne("MyProject_Backend.Models.Product", "Product")
                         .WithMany("Rates")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("ShareModel.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId1");
+
+                    b.Navigation("Product");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ShareModel.RateShare", b =>
+                {
+                    b.HasOne("ShareModel.User", null)
+                        .WithMany("Rates")
+                        .HasForeignKey("UserId1");
                 });
 
             modelBuilder.Entity("MyProject_Backend.Models.Product", b =>
+                {
+                    b.Navigation("Rates");
+                });
+
+            modelBuilder.Entity("ShareModel.User", b =>
                 {
                     b.Navigation("Rates");
                 });

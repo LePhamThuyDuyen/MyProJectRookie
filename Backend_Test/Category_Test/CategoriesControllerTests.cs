@@ -15,7 +15,7 @@ namespace Backend_Test
     {
 
         [Fact]
-        public async Task Get_list_categoriesAsync()
+        public async Task Get_List_Category()
         {
             var mockCategoryRepo = new Mock<ICategory>();
 
@@ -23,7 +23,7 @@ namespace Backend_Test
             {
                 new Category { CategoryId = 1, CategoryName = "Lipstick" },
                 new Category { CategoryId = 2, CategoryName = "sKincare" },
-                 new Category { CategoryId = 3, CategoryName = "LipCare" },
+                new Category { CategoryId = 3, CategoryName = "LipCare" },
             };
 
             mockCategoryRepo.Setup(mcp => mcp.GetAllAsync()).ReturnsAsync(temp.AsEnumerable());
@@ -40,12 +40,33 @@ namespace Backend_Test
             Assert.Equal(temp.Count, listCategories.Count);
             Assert.Equal(temp, listCategories);
         }
+
         [Fact]
-        public async Task Add_return_one_categoriesAsync()
+        public async Task Update_Category()
         {
             var mockCategoryRepo = new Mock<ICategory>();
 
-            Category category = new Category { CategoryId = 6, CategoryName = "Lip"};
+            Category category = new Category { CategoryId = 1, CategoryName = "Skin" };
+
+            mockCategoryRepo.Setup(mcp => mcp.UpdateAsync(1, category)).ReturnsAsync(category);
+
+            var controller = new CategoryController(mockCategoryRepo.Object);
+
+            var result = await controller.PutCategory(1, category);
+
+            Assert.NotNull(result);
+            var actionResult = Assert.IsType<OkObjectResult>(result);
+            Assert.NotNull(actionResult);
+            var value = actionResult.Value as Category;
+            Assert.True(category.CategoryId == value.CategoryId);
+        }
+
+        [Fact]
+        public async Task Post_Category()
+        {
+            var mockCategoryRepo = new Mock<ICategory>();
+
+            Category category = new Category { CategoryId = 6, CategoryName = "Lip" };
 
             mockCategoryRepo.Setup(mcp => mcp.CreateAsync(category)).ReturnsAsync(category);
 
@@ -53,7 +74,7 @@ namespace Backend_Test
 
             var result = await controller.PostCategory(category);
 
-           Assert.IsType<ActionResult<CategoryShare>>(result);
+            Assert.IsType<ActionResult<CategoryShare>>(result);
             Assert.NotNull(result);
             var actionResult = Assert.IsType<OkObjectResult>(result.Result);
             Assert.NotNull(actionResult);
@@ -62,5 +83,24 @@ namespace Backend_Test
         }
 
 
+        [Fact]
+        public async Task Delete_Category()
+        {
+            var mockCategoryRepo = new Mock<ICategory>();
+
+            Category category = new Category { CategoryId = 2, CategoryName = "sKincare" };
+
+            mockCategoryRepo.Setup(mcp => mcp.DeleteAsync(2)).ReturnsAsync(category);
+
+            var controller = new CategoryController(mockCategoryRepo.Object);
+
+            var result = await controller.DeleteCategory(2);
+
+            Assert.NotNull(result);
+            var actionResult = Assert.IsType<OkObjectResult>(result);
+            Assert.NotNull(actionResult);
+            var value = actionResult.Value as Category;
+            Assert.True(category == value);
+        }
     }
 }

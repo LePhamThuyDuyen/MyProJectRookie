@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using System.Collections.Generic;
 
 namespace ShareModel
 {
@@ -16,6 +15,5 @@ namespace ShareModel
 
         [PersonalData]
         public string FullName { get; set; }
-
     }
 }

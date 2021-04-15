@@ -25,6 +25,12 @@ namespace MyProject_Backend.Controllers
             return Ok(product);
         }
 
+        //[HttpPost]
+
+        //public async Task<ActionResult> Create(ProductFromCategory share)
+        //{
+
+        //}
 
         [HttpGet]
         [Route("{id}")]

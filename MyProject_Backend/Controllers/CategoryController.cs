@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyProject_Backend.Data;
 using MyProject_Backend.Models;
 using ShareModel;
 using System.Collections.Generic;
@@ -12,14 +11,17 @@ namespace MyProject_Backend.Controllers
     //[Authorize("Bearer")]
     public class CategoryController : ControllerBase
     {
+      // private readonly ApplicationDbContext _applicationDbContext;
 
         private readonly ICategory _category1;
+
       
         public CategoryController( ICategory category)
         {
+   
             _category1 = category;
-        }
 
+        }
 
         [HttpGet]
        // [AllowAnonymous]

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyProject_Backend.Data;
 using ShareModel;
@@ -25,16 +26,9 @@ namespace MyProject_Backend.Controllers
             return Ok(product);
         }
 
-        //[HttpPost]
-
-        //public async Task<ActionResult> Create(ProductFromCategory share)
-        //{
-
-        //}
-
         [HttpGet]
         [Route("{id}")]
-     //   [AllowAnonymous]
+        [AllowAnonymous]
         public async Task<ActionResult> GetById(int id)
         {
             var result = await _product.GetByIdAsync(id);
@@ -43,12 +37,14 @@ namespace MyProject_Backend.Controllers
 
         [HttpGet]
         [Route("category={categoryName}")]
-     //   [AllowAnonymous]
+        [AllowAnonymous]
         public async Task<ActionResult> GetByCategory(string categoryName)
         {
             var results = await _product.GetByCategoryAsync(categoryName);
             return Ok(results);
         }
+
+
 
     }
 }

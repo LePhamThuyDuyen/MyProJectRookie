@@ -198,6 +198,29 @@ namespace MyProject_Backend.Data.Migrations
                     b.ToTable("products");
                 });
 
+            modelBuilder.Entity("MyProject_Backend.Models.Rate", b =>
+                {
+                    b.Property<int>("idRate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Value")
+                        .HasColumnType("int");
+
+                    b.HasKey("idRate");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("rates");
+                });
+
             modelBuilder.Entity("ShareModel.User", b =>
                 {
                     b.Property<string>("Id")
@@ -326,6 +349,20 @@ namespace MyProject_Backend.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("category");
+                });
+
+            modelBuilder.Entity("MyProject_Backend.Models.Rate", b =>
+                {
+                    b.HasOne("MyProject_Backend.Models.Product", null)
+                        .WithMany("Rates")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MyProject_Backend.Models.Product", b =>
+                {
+                    b.Navigation("Rates");
                 });
 #pragma warning restore 612, 618
         }

@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShareModel", "ShareModel\Sh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerSite", "CustomerSite\CustomerSite.csproj", "{C90D66CC-DAB8-4385-8C53-F8BDD6BE0A4A}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Backend_Test", "Backend_Test\Backend_Test.csproj", "{CECA9744-6747-4168-8792-A5F30C10D5A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{C90D66CC-DAB8-4385-8C53-F8BDD6BE0A4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C90D66CC-DAB8-4385-8C53-F8BDD6BE0A4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C90D66CC-DAB8-4385-8C53-F8BDD6BE0A4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CECA9744-6747-4168-8792-A5F30C10D5A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CECA9744-6747-4168-8792-A5F30C10D5A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CECA9744-6747-4168-8792-A5F30C10D5A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CECA9744-6747-4168-8792-A5F30C10D5A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

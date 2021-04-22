@@ -12,7 +12,6 @@ namespace MyProject_Backend.Controllers
     [Authorize("Bearer")]
     public class CategoryController : ControllerBase
     {
-      // private readonly ApplicationDbContext _applicationDbContext;
 
         private readonly ICategory _category1;
 
@@ -41,7 +40,8 @@ namespace MyProject_Backend.Controllers
         }
 
         [HttpPut("{id}")]
-        [Authorize(Roles = "admin")]
+        [AllowAnonymous]
+        //[Authorize(Roles = "admin")]
         public async Task<IActionResult> PutCategory(int id, Category categories)
         {
             var category = await _category1.UpdateAsync(id,categories);
@@ -53,7 +53,8 @@ namespace MyProject_Backend.Controllers
 
 
         [HttpPost]
-        [Authorize(Roles = "admin")]
+        [AllowAnonymous]
+        // [Authorize(Roles = "admin")]
         public async Task<ActionResult<CategoryShare>> PostCategory(Category categories)
         {
             var category = await _category1.CreateAsync(categories);
@@ -61,7 +62,8 @@ namespace MyProject_Backend.Controllers
         }
 
         [HttpDelete("{id}")]
-         [Authorize(Roles = "admin")]
+        [AllowAnonymous]
+        // [Authorize(Roles = "admin")]
         public async Task<IActionResult> DeleteCategory(int id)
         {
             var category = await _category1.DeleteAsync (id);

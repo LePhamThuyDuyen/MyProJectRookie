@@ -73,6 +73,7 @@ namespace MyProject_Backend
                     policy.RequireAuthenticatedUser();
                 });
             });
+
             services.AddControllersWithViews();
 
             services.AddSwaggerGen(c =>
@@ -122,7 +123,12 @@ namespace MyProject_Backend
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseCors(builder =>
+            {
+                builder.AllowAnyOrigin();
+                builder.AllowAnyHeader();
+                builder.AllowAnyMethod();
+            });
             app.UseRouting();
 
             app.UseIdentityServer();

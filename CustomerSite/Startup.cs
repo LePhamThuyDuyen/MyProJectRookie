@@ -35,7 +35,7 @@ namespace CustomerSite
                .AddCookie("Cookies")
                .AddOpenIdConnect("oidc", options =>
                {
-                   options.Authority = "https://localhost:44311";
+                   options.Authority = "https://leduyenshop.azurewebsites.net";
                    options.RequireHttpsMetadata = false;
                    options.GetClaimsFromUserInfoEndpoint = true;
 
@@ -57,7 +57,7 @@ namespace CustomerSite
                });
             services.AddHttpClient("myapi", c =>
             {
-                c.BaseAddress = new Uri("https://localhost:44311");
+                c.BaseAddress = new Uri("https://leduyenshop.azurewebsites.net");
             });
 
             services.AddHttpClient();

@@ -1,9 +1,6 @@
 ﻿using IdentityServer4;
 using IdentityServer4.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MyProject_Backend.IdentityServer
 {
@@ -44,9 +41,9 @@ namespace MyProject_Backend.IdentityServer
 
                     AllowedGrantTypes = GrantTypes.Code,
 
-                    RedirectUris = { "https://localhost:44351/signin-oidc" },
+                    RedirectUris = { "https://leduyenweb.azurewebsites.net/signin-oidc" },
 
-                    PostLogoutRedirectUris = { "https://localhost:44351/signout-callback-oidc" },
+                    PostLogoutRedirectUris = { "https://leduyenweb.azurewebsites.net/signout-callback-oidc" },
                       
                     AllowedScopes = new List<string>
                     {
@@ -65,9 +62,9 @@ namespace MyProject_Backend.IdentityServer
                     RequireConsent = false,
                     RequirePkce = true,
 
-                    RedirectUris =           { $"https://localhost:44311/swagger/oauth2-redirect.html" },
-                    PostLogoutRedirectUris = { $"https://localhost:44311/swagger/oauth2-redirect.html" },
-                    AllowedCorsOrigins =     { $"https://localhost:44311" },
+                    RedirectUris =           { $"https://leduyenshop.azurewebsites.net/swagger/oauth2-redirect.html" },
+                    PostLogoutRedirectUris = { $"https://leduyenshop.azurewebsites.net/swagger/oauth2-redirect.html" },
+                    AllowedCorsOrigins =     { $"https://leduyenshop.azurewebsites.net" },
 
                     AllowedScopes = new List<string>
                     {

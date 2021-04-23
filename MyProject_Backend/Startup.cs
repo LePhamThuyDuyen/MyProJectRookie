@@ -37,6 +37,7 @@ namespace MyProject_Backend
             services.AddTransient<ICategory, CategoryService>();
             services.AddTransient<IProduct, ProductService>();
             services.AddTransient<IRate, RateService>();
+            services.AddTransient<IUser, UserService>();
 
             services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddRoles<IdentityRole>()
@@ -54,7 +55,7 @@ namespace MyProject_Backend
             })
              .AddInMemoryIdentityResources(IdentityServerConfig.IdentityResources)
              .AddInMemoryApiScopes(IdentityServerConfig.ApiScopes)
-             .AddInMemoryClients(IdentityServerConfig.Clients)
+             .AddInMemoryClients(IdentityServerConfig.GetClients(Configuration))
              .AddAspNetIdentity<User>()
              .AddProfileService<CustomprofileSevice>()
              .AddDeveloperSigningCredential(); // not recommended for production - you need to store your key material somewhere secure

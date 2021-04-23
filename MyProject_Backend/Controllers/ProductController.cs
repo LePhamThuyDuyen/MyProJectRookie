@@ -55,11 +55,13 @@ namespace MyProject_Backend.Controllers
             pro.CategoryId = productShare.CategoryID;
             pro.Price = productShare.Price;
             pro.Image = productShare.Image;
+
             var result = await _product.CreateAsync(pro);
             return Ok(result);
         }
 
         [HttpDelete]
+        [Route("{id}")]
         [AllowAnonymous]
         public async Task<IActionResult> Delete(int id)
         {

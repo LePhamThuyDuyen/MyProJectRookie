@@ -32,6 +32,7 @@ const ListCategory = () => {
         lists.filter((item) => item.categoryId !== itemDel);
 
 
+        
     return (
         <div>
             <br />
@@ -58,11 +59,13 @@ const ListCategory = () => {
                                 <td>{item.categoryName}</td>
                                 <td>{item.CategoryId}</td>
                                 <td className="text-right">
+                                <Link to={`/Editcategory/${item.categoryId}`} >
                                     <Button //onClick={() => onEdit && onEdit(item)}
                                         color="link"
                                     >
                                         Edit
                     </Button>
+                    </Link>
                                     <Button
                                         onClick={() => handleDelete(item.categoryId)}
                                         color="link"

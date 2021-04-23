@@ -30,7 +30,7 @@ const ListProduct = () => {
     };
 
     const _removeViewItem = (lists, itemDel) =>
-        lists.filter((item) => item.productId !== itemDel);
+        lists.filter((item) => item.productID !== itemDel);
         
     return (
         <div>
@@ -48,7 +48,6 @@ const ListProduct = () => {
                     <tr>
                         <th>STT</th>
                         <th>Product Name</th>
-                        <th>DesScription</th>
                         <th>Price</th>
                         <th>Image</th>
                         <th>Category ID</th>
@@ -57,15 +56,14 @@ const ListProduct = () => {
                 <tbody>
                     {products.map(function (item, i) {
                         return (
-                            <tr>
+                            <tr key={i}>
                                 <th scope="row">{i}</th>
-                                <td>{item.productName}</td>
-                                <td>{item.description}</td>
+                                <td>{item.productName}</td>                              
                                 <td>{item.price}</td>
                                 <td>{item.categoryName}</td>
-                                <ProductImage src={item.image} text={item.productName}/>
+                               <td><ProductImage src={item.image} text={item.productName}/></td> 
                                 <td className="text-right">
-                                <Link to={`/Editcategory/${item.categoryId}`} >
+                                <Link to={`/Editcategory/${item.productID}`} >
                                     <Button
                                         color="link"
                                     >
@@ -73,7 +71,7 @@ const ListProduct = () => {
                     </Button>
                     </Link>
                                     <Button
-                                        onClick={() => handleDelete(item.categoryId)}
+                                        onClick={() => handleDelete(item.productID)}
                                         color="link"
                                         className="text-danger"  >
                                         Remove

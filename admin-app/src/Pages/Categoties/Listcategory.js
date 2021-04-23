@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Table } from "reactstrap";
+import { Link } from "react-router-dom";
 import CategoryService from "../../Service/CategoryService"
 
 const ListCategory = () => {
@@ -16,26 +17,30 @@ const ListCategory = () => {
 
     const handleCreate = () => setSelected({ Name: "", TypeProductId: 0 });
 
-    
-  const handleDelete = (itemId) => {
-    let result = window.confirm("Delete this item?");
-    if (result) {
 
-        CategoryService.delete(itemId).then((resp) => {
-            setCategories(_removeViewItem(Categories, itemId));
-      });
-    }
-  };
+    const handleDelete = (itemId) => {
+        let result = window.confirm("Delete this item?");
+        if (result) {
 
-  const _removeViewItem = (lists, itemDel) =>
-  lists.filter((item) => item.categoryId !== itemDel);
+            CategoryService.delete(itemId).then((resp) => {
+                setCategories(_removeViewItem(Categories, itemId));
+            });
+        }
+    };
 
-  
+    const _removeViewItem = (lists, itemDel) =>
+        lists.filter((item) => item.categoryId !== itemDel);
+
+
     return (
         <div>
             <br />
             <div className="text-right">
-                <Button color="primary" children="New Category" onClick={() => handleCreate()} />
+            <Link to={`/createcategory/`} >
+            <Button  color="link"className="text-success">
+                Create
+            </Button>
+            </Link>
             </div>
             <Table>
 
@@ -53,7 +58,7 @@ const ListCategory = () => {
                                 <td>{item.categoryName}</td>
                                 <td>{item.CategoryId}</td>
                                 <td className="text-right">
-                                  <Button //onClick={() => onEdit && onEdit(item)}
+                                    <Button //onClick={() => onEdit && onEdit(item)}
                                         color="link"
                                     >
                                         Edit
@@ -61,8 +66,7 @@ const ListCategory = () => {
                                     <Button
                                         onClick={() => handleDelete(item.categoryId)}
                                         color="link"
-                                        className="text-danger"
-                                    >
+                                        className="text-danger"  >
                                         Remove
                     </Button>
                                 </td>

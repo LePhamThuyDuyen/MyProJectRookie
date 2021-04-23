@@ -5,3 +5,5 @@ export const UPDATE_PRODUCT = '/product';
 export const LIST_CATEGORY = '/category';
 export const CREATE_CATEGORY = '/createcategory';
 export const UPDATE_CATEGORY = '/Editcategory/:id';
+
+export const LIST_USER = '/user';

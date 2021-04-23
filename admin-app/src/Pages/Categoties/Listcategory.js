@@ -30,8 +30,6 @@ const ListCategory = () => {
 
     const _removeViewItem = (lists, itemDel) =>
         lists.filter((item) => item.categoryId !== itemDel);
-
-
         
     return (
         <div>
@@ -60,7 +58,7 @@ const ListCategory = () => {
                                 <td>{item.CategoryId}</td>
                                 <td className="text-right">
                                 <Link to={`/Editcategory/${item.categoryId}`} >
-                                    <Button //onClick={() => onEdit && onEdit(item)}
+                                    <Button
                                         color="link"
                                     >
                                         Edit

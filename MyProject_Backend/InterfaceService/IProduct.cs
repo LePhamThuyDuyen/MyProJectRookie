@@ -18,5 +18,10 @@ namespace MyProject_Backend.Controllers
         Task<Product> UpdateAsync(int id, Product pro);
 
         Task<ProductShare> GetByIdAsync(int id);
+
+        Task<Product> FindByIdAsync(int id);
+
+
+
     }
 }

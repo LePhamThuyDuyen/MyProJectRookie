@@ -1,11 +1,18 @@
 ﻿using IdentityServer4;
 using IdentityServer4.Models;
+using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 
 namespace MyProject_Backend.IdentityServer
 {
     public class IdentityServerConfig
     {
+        private readonly IConfiguration _configuration;
+        public IdentityServerConfig(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
         public static IEnumerable<IdentityResource> IdentityResources =>
             new List<IdentityResource>
             {
@@ -18,8 +25,9 @@ namespace MyProject_Backend.IdentityServer
              {
                   new ApiScope("rookieshop.api", "Rookie Shop API")
              };
-        public static IEnumerable<Client> Clients =>
-           new List<Client>
+        public static IEnumerable<Client> GetClients(IConfiguration configuration)
+        {
+            return new List<Client>
            {
                 // machine to machine client
                 new Client
@@ -41,10 +49,10 @@ namespace MyProject_Backend.IdentityServer
 
                     AllowedGrantTypes = GrantTypes.Code,
 
-                    RedirectUris = { "https://leduyenweb.azurewebsites.net/signin-oidc" },
+                    RedirectUris = {  configuration["IdentityDbConfig:MVC:RedirectUris"]  },
 
-                    PostLogoutRedirectUris = { "https://leduyenweb.azurewebsites.net/signout-callback-oidc" },
-                      
+                    PostLogoutRedirectUris = {   configuration["IdentityDbConfig:MVC:PostLogoutRedirectUris"] },
+
                     AllowedScopes = new List<string>
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
@@ -62,9 +70,9 @@ namespace MyProject_Backend.IdentityServer
                     RequireConsent = false,
                     RequirePkce = true,
 
-                    RedirectUris =           { $"https://leduyenshop.azurewebsites.net/swagger/oauth2-redirect.html" },
-                    PostLogoutRedirectUris = { $"https://leduyenshop.azurewebsites.net/swagger/oauth2-redirect.html" },
-                    AllowedCorsOrigins =     { $"https://leduyenshop.azurewebsites.net" },
+                    RedirectUris =           { configuration["IdentityDbConfig:Swagger:RedirectUris"] },
+                    PostLogoutRedirectUris = { configuration["IdentityDbConfig:Swagger:PostLogoutRedirectUris"] },
+                    AllowedCorsOrigins =     { configuration["IdentityDbConfig:Swagger:AllowedCorsOrigins"] },
 
                     AllowedScopes = new List<string>
                     {
@@ -74,5 +82,7 @@ namespace MyProject_Backend.IdentityServer
                     }
                 },
             };
+        }
+           
     }
 }

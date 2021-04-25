@@ -10,7 +10,6 @@ namespace ShareModel
 
         public User(string userName) : base(userName)
         {
-
         }
 
         [PersonalData]

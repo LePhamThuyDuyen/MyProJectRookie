@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-
 namespace ShareModel
 {
     public  class ProductCreateRequest

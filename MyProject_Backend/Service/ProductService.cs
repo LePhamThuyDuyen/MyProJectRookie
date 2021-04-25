@@ -98,7 +98,7 @@ namespace MyProject_Backend.Controllers
 
         public async Task<Product> FindByIdAsync(int id)
         {
-            var product = await _applicationDb.products.Include(p => p.category).Where(p => p.Id == id).FirstOrDefaultAsync();
+            var product = await _applicationDb.products.Include(p => p.category).Where(p => p.CategoryId == id).FirstOrDefaultAsync();
             return product;
         }
 

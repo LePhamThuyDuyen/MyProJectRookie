@@ -20,4 +20,8 @@
     <ProjectReference Include="..\ShareModel\ShareModel.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Image\" />
+  </ItemGroup>
+
 </Project>

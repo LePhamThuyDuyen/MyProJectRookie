@@ -38,6 +38,7 @@ namespace MyProject_Backend
             services.AddTransient<IProduct, ProductService>();
             services.AddTransient<IRate, RateService>();
             services.AddTransient<IUser, UserService>();
+            services.AddTransient<IStorageService, FileStorageService>();
 
             services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddRoles<IdentityRole>()

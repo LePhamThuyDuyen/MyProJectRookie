@@ -14,6 +14,6 @@ namespace ShareModel
 
         public string Description { get; set; }
 
-        public IFormFile ImageRequest { get; set; }
+        public string ImageRequest { get; set; }
     }
 }

@@ -19,12 +19,17 @@ namespace MyProject_Backend.Controllers
         {
             _applicationDb = applicationDb;
         }
-        public async Task<Product> CreateAsync(Product pro)
+        public async Task<Product> CreateAsync(ProductCreateRequest model)
         {
-            
-            _applicationDb.Add(pro);
+            var product = new Product();
+            product.Name = model.ProductName;
+            product.Description = model.Description;
+            product.Price = model.Price;
+            product.CategoryId = model.CategoryID;
+            product.Image = model.ImageRequest;
+            _applicationDb.Add(product);
             await _applicationDb.SaveChangesAsync();
-            return pro;
+            return product;
         }
 
         public async Task<Product> DeleteAsync(int id)
@@ -43,6 +48,7 @@ namespace MyProject_Backend.Controllers
                 new ProductShare
                 {
                     ProductID = p.Id,
+                    CategoryID=p.CategoryId,
                     ProductName = p.Name,
                     Description = p.Description,
                     Price = p.Price,
@@ -72,6 +78,7 @@ namespace MyProject_Backend.Controllers
                new ProductShare
                {
                    ProductID = p.Id,
+                   CategoryID=p.CategoryId,
                    ProductName = p.Name,
                    Description = p.Description,     
                    Price = p.Price,     
@@ -81,24 +88,21 @@ namespace MyProject_Backend.Controllers
             return product;
         }
 
-        public async Task<Product> UpdateAsync(int id, Product pro)
+        public async Task<Product> UpdateAsync(int id, ProductCreateRequest model)
         {
             var product = await _applicationDb.products.FindAsync(id);
-            if (product == null)
-            {
-                return null;
-            }
-            product.Name = pro.Name;
-            product.Description = pro.Description;
-            product.Price = pro.Price;
-            product.CategoryId = pro.CategoryId;
+            product.Name = model.ProductName;
+            product.Description = model.Description;
+            product.Price = model.Price;
+            product.CategoryId = model.CategoryID;
+            product.Image = model.ImageRequest;
             await _applicationDb.SaveChangesAsync();
             return product;
         }
 
         public async Task<Product> FindByIdAsync(int id)
         {
-            var product = await _applicationDb.products.Include(p => p.category).Where(p => p.CategoryId == id).FirstOrDefaultAsync();
+            var product = await _applicationDb.products.Include(p => p.category).Where(p => p.Id == id).FirstOrDefaultAsync();
             return product;
         }
 

@@ -7,7 +7,7 @@ namespace MyProject_Backend.Controllers
 {
     public  interface IProduct
     {
-        Task<Product> CreateAsync(Product pro);
+        Task<Product> CreateAsync(ProductCreateRequest model);
 
         Task<Product> DeleteAsync(int id);
 
@@ -15,7 +15,7 @@ namespace MyProject_Backend.Controllers
 
         Task<IEnumerable<ProductFromCategory>> GetByCategoryAsync(string categoryName);
 
-        Task<Product> UpdateAsync(int id, Product pro);
+        Task<Product> UpdateAsync(int id, ProductCreateRequest model);
 
         Task<ProductShare> GetByIdAsync(int id);
 

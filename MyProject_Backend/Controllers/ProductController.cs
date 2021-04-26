@@ -16,12 +16,10 @@ namespace MyProject_Backend.Controllers
     public class ProductController : ControllerBase
     {
         private IProduct _product;
-        private readonly IStorageService _storageService;
 
         public ProductController(IProduct product, IStorageService storageService)
         {
             _product = product;
-            _storageService = storageService;
         }
 
         [HttpGet]
@@ -53,17 +51,8 @@ namespace MyProject_Backend.Controllers
         [AllowAnonymous]
         public async Task<ActionResult<ProductShare>> Create([FromForm] ProductCreateRequest productShare)
         {
-            Product pro = new Product();
-            pro.Name = productShare.ProductName;
-            pro.Description = productShare.Description;
-            pro.CategoryId = productShare.CategoryID;
-            pro.Price = productShare.Price;
-
-            if (productShare.ImageRequest != null)
-            {
-                pro.Image = await SaveFile(productShare.ImageRequest);
-            }
-            var result = await _product.CreateAsync(pro);
+         
+            var result = await _product.CreateAsync(productShare);
             return Ok(result);
         }
 
@@ -83,20 +72,13 @@ namespace MyProject_Backend.Controllers
         public async Task<ActionResult> Update(int id, [FromForm] ProductCreateRequest model)
         {
             var product = await _product.FindByIdAsync(id);
-            product.Name = model.ProductName;
-            product.Description = model.Description;
-            product.Price = model.Price;
-            product.CategoryId = model.CategoryID   ;
-            var result = await _product.UpdateAsync(id, product);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            var result = await _product.UpdateAsync(id, model);
             return Ok(result);
         }
 
-        private async Task<string> SaveFile(IFormFile file)
-        {
-            var originalFileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-            var fileName = $"{Guid.NewGuid()}{Path.GetExtension(originalFileName)}";
-            await _storageService.SaveFileAsync(file.OpenReadStream(), fileName);
-            return fileName;
-        }
     }
 }

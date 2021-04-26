@@ -3,10 +3,11 @@ import Navbar from './components/Navbar';
 import CategoryForm from './Pages/Categoties/CategoryForm';
 import { Router ,Switch, Route } from "react-router-dom";
 import ListCategory from './Pages/Categoties/Listcategory';
-import { LIST_CATEGORY,CREATE_CATEGORY, UPDATE_CATEGORY,LIST_USER, LIST_PRODUCT} from './components/router';
+import { LIST_CATEGORY,CREATE_CATEGORY, UPDATE_CATEGORY,LIST_USER, LIST_PRODUCT,CREATE_PRODUCT,UPDATE_PRODUCT} from './components/router';
 import history from'./Helpers/help';
 import ListUser from './Pages/User/ListUser';
 import ListProduct from'./Pages/Products/ListProduct';
+import ProductForm from './Pages/Products/ProductForm';
 
 function App() {
   return (
@@ -30,6 +31,12 @@ function App() {
         </Route>
         <Route path={LIST_PRODUCT}>
           <ListProduct />
+        </Route>
+        <Route path={CREATE_PRODUCT}>
+          <ProductForm />
+        </Route>
+        <Route path={UPDATE_PRODUCT}>
+          <ProductForm />
         </Route>
       </Switch>
     </Router>

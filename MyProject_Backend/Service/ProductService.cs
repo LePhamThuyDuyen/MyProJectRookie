@@ -50,6 +50,7 @@ namespace MyProject_Backend.Controllers
                     ProductID = p.Id,
                     CategoryID=p.CategoryId,
                     ProductName = p.Name,
+                    CategoryName=p.category.CategoryName,
                     Description = p.Description,
                     Price = p.Price,
                     Image = p.Image

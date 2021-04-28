@@ -1,9 +1,6 @@
 ﻿using CustomerSite.SerVices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace CustomerSite.Controllers
@@ -27,7 +24,6 @@ namespace CustomerSite.Controllers
             {
                 return Content("false");
             }
-
             return Redirect(uri_redirect);
         }
     }

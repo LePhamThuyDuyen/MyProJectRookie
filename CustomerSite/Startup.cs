@@ -35,7 +35,7 @@ namespace CustomerSite
                .AddCookie("Cookies")
                .AddOpenIdConnect("oidc", options =>
                {
-                   options.Authority = "https://leduyenshop.azurewebsites.net";
+                   options.Authority = Configuration.GetValue<string>("IdentityServer"); ;
                    options.RequireHttpsMetadata = false;
                    options.GetClaimsFromUserInfoEndpoint = true;
 
@@ -55,10 +55,6 @@ namespace CustomerSite
                        RoleClaimType = "role"
                    };
                });
-            services.AddHttpClient("myapi", c =>
-            {
-                c.BaseAddress = new Uri("https://leduyenshop.azurewebsites.net");
-            });
 
             services.AddHttpClient();
             services.AddTransient<IProductApiClient, ProductApiClient>();

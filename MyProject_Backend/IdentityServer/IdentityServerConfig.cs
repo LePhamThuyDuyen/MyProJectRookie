@@ -7,12 +7,6 @@ namespace MyProject_Backend.IdentityServer
 {
     public class IdentityServerConfig
     {
-        private readonly IConfiguration _configuration;
-        public IdentityServerConfig(IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
-
         public static IEnumerable<IdentityResource> IdentityResources =>
             new List<IdentityResource>
             {
@@ -27,7 +21,7 @@ namespace MyProject_Backend.IdentityServer
              };
         public static IEnumerable<Client> GetClients(IConfiguration configuration)
         {
-            return new List<Client>
+           var temp =  new List<Client>
            {
                 // machine to machine client
                 new Client
@@ -70,9 +64,9 @@ namespace MyProject_Backend.IdentityServer
                     RequireConsent = false,
                     RequirePkce = true,
 
-                    RedirectUris =           { configuration["IdentityDbConfig:Swagger:RedirectUris"] },
-                    PostLogoutRedirectUris = { configuration["IdentityDbConfig:Swagger:PostLogoutRedirectUris"] },
-                    AllowedCorsOrigins =     { configuration["IdentityDbConfig:Swagger:AllowedCorsOrigins"] },
+                    RedirectUris =           { configuration["IdentityDbConfig:SWAGGER:RedirectUris"] },
+                    PostLogoutRedirectUris = { configuration["IdentityDbConfig:SWAGGER:PostLogoutRedirectUris"] },
+                    AllowedCorsOrigins =     { configuration["IdentityDbConfig:SWAGGER:AllowedCorsOrigins"] },
 
                     AllowedScopes = new List<string>
                     {
@@ -82,6 +76,8 @@ namespace MyProject_Backend.IdentityServer
                     }
                 },
             };
+
+            return temp;
         }
            
     }

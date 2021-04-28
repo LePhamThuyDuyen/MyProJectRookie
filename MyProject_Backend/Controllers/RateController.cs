@@ -9,6 +9,7 @@ namespace MyProject_Backend.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize("Bearer")]
     public class RateController : ControllerBase
     {
         private readonly IRate _rate;
@@ -21,8 +22,7 @@ namespace MyProject_Backend.Controllers
         }
 
         [HttpPost]
-         [Authorize("Bearer")]
-        //[Authorize]
+        [AllowAnonymous]
         public async Task<IActionResult> CreateRate(RateShare rateShare)
         {
             var result = await _rate.CreateRate(rateShare);

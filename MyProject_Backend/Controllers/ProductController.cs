@@ -17,7 +17,7 @@ namespace MyProject_Backend.Controllers
     {
         private IProduct _product;
 
-        public ProductController(IProduct product, IStorageService storageService)
+        public ProductController(IProduct product)
         {
             _product = product;
         }

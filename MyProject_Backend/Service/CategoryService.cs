@@ -8,31 +8,25 @@ using System.Threading.Tasks;
 namespace MyProject_Backend.Controllers
 {
     public class CategoryService : ICategory
-
     {
-
         private readonly ApplicationDbContext _dbContext;
 
         public CategoryService (ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
         }
-
         public async Task<Category> CreateAsync(Category cate)
         {
             _dbContext.Add(cate);
             await _dbContext.SaveChangesAsync();
-            return cate;
-                
+            return cate;       
         }
-       
+
         public async Task<IEnumerable<Category>> GetAllAsync()
         {
             var category = await _dbContext.categories.ToListAsync();
             return category; 
         }
-
-       
 
         public async Task<Category> DeleteAsync(int id)
         {
@@ -42,7 +36,6 @@ namespace MyProject_Backend.Controllers
             _dbContext.categories.Remove(category);
             await _dbContext.SaveChangesAsync();
             return category;
-
         }
 
         public async Task<Category> UpdateAsync(int id, Category cate)

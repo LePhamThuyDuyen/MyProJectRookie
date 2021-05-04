@@ -14,7 +14,7 @@ using System;
 
 namespace CustomerSite
 {
-    public class Startup
+    public class Startup 
     {
         public Startup(IConfiguration configuration)
         {
@@ -61,9 +61,14 @@ namespace CustomerSite
             services.AddTransient<ICategoryApiClient, CategoryApiClient>();
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            services.AddControllersWithViews();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
 
-            
+            services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -87,6 +92,8 @@ namespace CustomerSite
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
